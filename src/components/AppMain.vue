@@ -11,10 +11,8 @@ export default {
     <main>
         <div class="container">
             <div class="row">
-                <div class="col-12 m-4 bg-dark rounded">
-                    <div class="col-12">
-                        <Pokelist />
-                    </div>
+                <div class="col-12">
+                    <Pokelist />
                 </div>
             </div>
         </div>
