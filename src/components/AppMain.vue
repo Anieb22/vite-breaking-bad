@@ -1,6 +1,10 @@
 <script>
-export default {
+import Pokelist from './Pokelist.vue';
 
+export default {
+    components: {
+        Pokelist
+    }
 }
 </script>
 <template>
@@ -9,7 +13,7 @@ export default {
             <div class="row">
                 <div class="col-12 m-4 bg-dark rounded">
                     <div class="col-12">
-                        <h1 class="text-white">main</h1>
+                        <Pokelist />
                     </div>
                 </div>
             </div>

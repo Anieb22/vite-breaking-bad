@@ -1,6 +1,5 @@
 <script>
 export default {
-
 }
 </script>
 <template>
@@ -15,10 +14,6 @@ export default {
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                     </select>
-
-                </div>
-                <div class="col-3">
-
                 </div>
             </div>
         </div>
