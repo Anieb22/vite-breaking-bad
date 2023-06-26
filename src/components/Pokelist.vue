@@ -25,8 +25,13 @@ export default {
     },
 
     methods: {
-        getCardStyle(pokemon) {
+        type1(pokemon) {
             const backgroundColor = this.typesColors[pokemon.type1];
+            return { backgroundColor };
+        },
+
+        type2(pokemon) {
+            const backgroundColor = this.typesColors[pokemon.type2];
             return { backgroundColor };
         }
     }
@@ -35,13 +40,14 @@ export default {
 <template lang="">
     <div class="col-12 bg-dark rounded" v-if="store.load === false">
         <div class="d-flex flex-wrap justify-content-between">
-            <div v-for="(pokemon, index) in store.pokeList" :key="pokemon._id" class="card m-2 card-pokemon" :style="getCardStyle(pokemon)">
+            <div v-for="(pokemon, index) in store.pokeList" :key="pokemon._id" class="card m-2 card-pokemon">
                 <img :src="pokemon.imageUrl" class="card-img-top" alt="pokemon">
                 <div class="card-body">
                     <p class="card-text text-center">
                         <h5>{{pokemon.number}}</h5>
                         <h4>{{pokemon.name}}</h4>
-                        <h5>{{pokemon.type1}} {{pokemon.type2}}</h5>
+                        <h5 :style="type1(pokemon)" class="rounded p-2">{{pokemon.type1}}</h5>
+                        <h5 :style="type2(pokemon)" class="rounded p-2">{{pokemon.type2}}</h5>
                     </p>
                 </div>
             </div>
