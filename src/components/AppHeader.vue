@@ -15,16 +15,27 @@ export default {
 
     methods: {
         nameSearched() {
-            console.log(store.nameSearched);
             let myUrl = store.apiUrl;
-            if (store.nameSearched !== '') {
-                myUrl += `?q[name]=${store.nameSearched}`;
 
-                axios.get(myUrl).then((response) => {
-                    store.pokeList = response.data.docs;
-                    store.load = false
-                })
+            const queryParams = [];
+
+            if (store.nameSearched !== '') {
+                queryParams.push(`q[name]=${store.nameSearched}`);
             }
+
+            if (store.typeSelected !== 'All') {
+                queryParams.push(`q[type1]=${store.typeSelected}`);
+            }
+
+            if (queryParams.length > 0) {
+                myUrl += '?' + queryParams.join('&');
+            }
+
+            axios.get(myUrl).then((response) => {
+                store.pokeList = response.data.docs;
+                store.load = false
+            })
+
         },
     },
 }
@@ -36,7 +47,7 @@ export default {
                 <div class="col-12 d-flex justify-content-between align-items-center">
                     <img src="../assets/img/lucine-pokedex.png" class="w-25" alt="image">
                     <AppSearch @search="nameSearched" />
-                    <AppSelect />
+                    <AppSelect @search="nameSearched" />
                 </div>
             </div>
         </div>
