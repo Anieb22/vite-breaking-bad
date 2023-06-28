@@ -18,7 +18,7 @@ export default {
             console.log(store.nameSearched);
             let myUrl = store.apiUrl;
             if (store.nameSearched !== '') {
-                myUrl += `?name=${store.nameSearched}`;
+                myUrl += `?q[name]=${store.nameSearched}`;
 
                 axios.get(myUrl).then((response) => {
                     store.pokeList = response.data.docs;
