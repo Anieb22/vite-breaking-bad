@@ -1,10 +1,17 @@
 <script>
 import Pokelist from './Pokelist.vue';
+import { store } from '../store';
 
 export default {
     components: {
         Pokelist
-    }
+    },
+
+    data() {
+        return {
+            store
+        }
+    },
 }
 </script>
 <template>
